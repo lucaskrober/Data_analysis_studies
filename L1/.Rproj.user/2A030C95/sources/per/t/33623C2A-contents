@@ -1,0 +1,130 @@
+###########################     Aula 1 - Primeiro contato com o R     ##########################
+###########################     Data: 20/08/2015                      ##########################
+###########################     Lucas Kr?hling Bernardi               ##########################
+
+#Nesta primeira aula vamos aprender a criar vetores. Um vetor nada mais ? do que um objeto
+#que recebe uma sequencia de dados unidimensional, por exemplo: v<-1 ou v=1
+v=1;
+w=2;
+
+
+sample(1,2:121)
+
+#Para colocar mais valores dentro de um ?nico vetor devemos fazer da seguinte maneira:
+b=c(3,5,7,9);
+
+#Digamos que tenhamos importado um valor de um outro programa e n?o sabemos quantos dados temos
+#dentro daquele vetor em quest?o, dessa forma, para saber o comprimento do vetor devemos
+#utilizar a ferramenta length:
+length(b);
+
+
+#Vamos criar um vetor que possui uma sequ?ncia num?rica que comece no 2, vai at? 1000, por?m
+#caminhando de 2 em 2, isso se faz assim:
+v=seq(2,1000,2);
+
+#caso queiramos que o R j? nos mostre o vetor na janela de baixo (janela do pr?prio R) devemos
+#colocar tudo entre par?ntesis, fazer da seguinte forma:
+(v=seq(2,1000,2));
+
+#Para saber o tamanho do vetor criado pode-se utilizar o length da mesma forma que utiliza-se
+#para descobrir o tamanho do vetor importado, entao:
+length(v)
+
+#vamos criar um vetor de nomes
+nomes=c('a','b','c','d','f','g','h','Lucas','Rayssa','Participante 1','Participante 2');
+
+#para saber qual ? o valor do vetor correspondente ? posi??o que voc? quer,
+#por exemplo, qual o valor que corresponde ao quarto n?mero/valor do vetor criado, faremos da
+#seguinte maneira
+nomes[4];
+nomes[9];
+nomes[10];
+
+
+#Vamos mudar de assunto, vamos falar agora de Matrizes.
+#A principal diferen?a entre Matrizes e Vetores ? que uma Matriz ? multidimensional
+#entao o comando para criar matrizes ? Matrix, dessa forma, para criarmos a Matriz "m", temos:
+#onde o primeiro valor ? o que vai dentro de cada c?lula, o segundo valor ? o n?mero de linhas
+#e o terceiro valor ? o numero de colunas
+(m=matrix(0,3,2));
+
+
+#Para saber o tamanho da matriz utilizamos o comando dim, para o n?mero de linhas utiliza-se
+#nrow e para n?mero de colunas utiliza-se ncol:
+dim(m);
+nrow(m);
+ncol(m);
+
+
+#vamos colocar valores diferentes para essa matriz
+(m=matrix(1:6,3,2));
+
+#para descobrir o valor de uma determinada posi??o da matriz, por exemplo: 
+#"qual valor est? na linha 3, na coluna 1?":
+m[3,1];
+
+#para saber todos os valores de uma coluna devemos deixar a posi??o da linha vazia e vice-e-versa
+m[,1];
+#ou
+m[1,];
+
+#para encontrar a matriz transposta utiliza-se o comando t:
+(tm=t(m));
+
+#Criando uma matriz quadrada para encontrar a inversa dela:
+(mq=matrix(runif(9,1,60),3,3));
+
+#invertendo a matriz
+(imq=solve(mq));
+
+#vamos falar agora sobre dataframe (pacote de dados, conjunto de dados), todo arquivo importado
+#do excel ser? um data frame
+(df=data.frame(n=1:26,letras=letters));
+
+#O comando View (com V mai?sculo) serve apenas para visualizar o objeto numa janela separada:
+View(df);
+
+#O comando edit serve para editar o objeto. LEMBRAR DE FECHAR ap?s o fim da edi??o
+edit(df);
+
+#para saber os valores das colunas do seu dataframe utiliza-se o seguinte comando:
+df$n;
+#ou
+df$letras;
+
+
+#para saber os nomes das colunas do seu dataframe utiliza-se o comando names:
+names(df);
+
+
+###Brincadeira de como jogar na mega sena:
+
+#amostra com n?meros de 1 at? 60 (1:60) sendo selecionados 6 n?meros
+sample(1:60,6);
+
+
+#____________________________________________#______________________________________________#
+
+
+#Criando uma lista (objeto novo que cont?m v?rios outros objetos criados anteriormente)
+#com uma lista vc atribui novos nomes aos objetos anteriores
+lista=list(veto=b,df2=df,matriz=m);
+
+
+#Importar e exportar arquivos no R, utilizando o formato .csv
+dados=read.csv2('dados_sep_virg.csv')
+View(dados)
+
+#vamos criar uma coluna nova para o percentual de casca:
+dados$perc_casca=round((1-dados$visc/dados$vicc)*100,2);
+
+#tradu??o: crie pra mim uma coluna chamada perc_casca, nessa coluna os valores ser?o 1- o
+#resultado da divis?o entre o valor de visc por vicc, mas quero isso na forma de porcentagem
+#e a fun??o round arredonda para o n?mero de casas decimais desejadas, que ser? selecionado
+#ap?s a equa??o, separado por uma v?rgula
+View(dados)
+
+
+#j? que importamos, agora vamos exportar os mesmos dados:
+write.csv2(dados,'cubagem_r.csv',row.names=F);

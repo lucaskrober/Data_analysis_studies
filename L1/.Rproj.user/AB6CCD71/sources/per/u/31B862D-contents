@@ -1,0 +1,4 @@
+adult.data <- read.csv("data_row/adult_data_row.csv", header=FALSE)
+head(adult.data)
+names(adult.data) <- c("age", "workclass", "fnlwgt", "education", "education-num", "marital-status", "occupation", "relationship", "race", "sex", "capital-gain", "capital-loss", "hours-per-week", "native-country")
+write.csv(adult.data,file="data/adult_data.csv")

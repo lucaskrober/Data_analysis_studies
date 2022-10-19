@@ -1,0 +1,145 @@
+# Basics of R
+# =========================
+# 1. Expressions
+x <- 1
+print(x)
+x
+
+# 2. Comments
+#
+##
+
+# 3. How to get help?
+# help(“name_of_a_function”) - name of the function should be in parentheses – expample help(”mean”)
+# ?name_of_a_function - expample ?mean
+
+# 4. Numbers.
+# Treated as numeric objects (double precision real numbers)
+# Integer number should be explicitly indicated with L suffix
+y <- 1L
+
+# Inf is a special number which represents infinity and can be used in ordinary calculations:
+1/0
+1/Inf
+
+## NaN represents an unidentified value number (ex. 0/0) and treated as NA
+0/0
+
+# 4. Attributes
+# Names, dimnames
+# Dimensions
+# Class
+# Length
+# Other user-defined attributes/metadata
+# Access atributes using attributes() function
+
+# 4. Vector
+# Vector - is the most basic object that can only contain atomic objects of the same class
+# Empty vector can be created by function: vector()
+
+z <- c(1.1,0.35) ## numeric
+# Function c() can be think as concatenating (chaining) values
+x <- c(TRUE,FALSE) ## logical
+x <- c('x','y') ## character
+x <- 5:10 ## integer
+x <- c(1+0i, 10+10i) ## complex
+
+# Using vector() function
+x <- vector('numeric',length=10)
+
+
+# 5. Coercion
+# Coercion happens when different objects are mixed in a vector:
+# they automatically will be coerced to the same class
+
+# Automatic coercion
+y <- c(1.5,'a') ## character
+y <- c(TRUE,2) ## numeric
+y <- c('a',TRUE) ## character
+
+y <- c(1.5,2L,'b',FALSE) ## ???
+
+# Explicit coercion
+# Using as.* function (as.character(), as.numeric(), etc.)
+x <- 0:10
+class(x)
+x <- as.numeric(x)
+class(x)
+as.logical(x)
+x <- as.character(x)
+x <- as.numeric(x)
+
+# Failed explicit coercion
+x <- c('a','b','c')
+as.numeric(x)
+as.logical(x)
+as.complex(x)
+
+# 6. Lists
+# Lists are special kinds of vector that can contain elements of different classes
+x <- list(1:5,'a',T,1+0i); x
+x[[1]][1]
+
+# 7. Matrices
+# Matrixes are vectors with dim (dimension) attribute.
+x <- matrix(nrow=1,ncol=3); x
+dim(x)
+attributes(x)
+
+# Created column-wise.
+x <- matrix(1:6,nrow=1,ncol=3); x
+
+# Can be created from vector adding a dim attribute
+x <- 1:6; x
+dim(x) <- c(2,3)
+
+# Binding columns.
+x <- 1:3;x; y <- 4:6; y
+cbind(x,y) 
+# Binding rows
+rbind(x,y)
+
+# 8. Factors
+# Used to represent categorical data (ex. male, female)
+# More descriptive
+# Can be ordered or unordered
+# Unordered factors
+x <- factor(c('male', 'male', 'female', 'male')); x
+table(x)
+
+# Ordered factors
+x <- factor(c("male", "male", "female", "male", levels=c("male","female"))); x
+
+# 9. Missing values
+# Results as NA or NaN of undefined mathematical operations
+# is.na() used to test objects for NAs
+# is.nan() used to test for NaNs
+# NA has a class (numeric, character, etc.)
+# NaN is also NA but NA is not NaN
+x <- c(1, NaN, 3, NA, 5)
+is.na(x)
+is.nan(x)
+
+# 10. Data frames
+# Used to store tabular data (tables)
+# Unlike matrices data frames can store different classes of objects
+# Have special attribute row.names
+# Usually created by read.table() or read.csv()
+x <- data.frame(age=c(21,23,22),gender=c('male', 'male', 'female')); x
+c(nrow(x),ncol(x))
+
+# Creating names make code more self descriptive
+x <- 1:3
+names(x)
+names(x) <- c("Unicamp","UFSCar","USP"); x
+names(x)
+
+# Reading data.frames
+adult.data <- read.csv("data_row/adult_data_row.csv", header=FALSE)
+head(adult.data)
+names(adult.data) <- c("age", "workclass", "fnlwgt", "education", "education-num", "marital-status", "occupation", "relationship", "race", "sex", "capital-gain", "capital-loss", "hours-per-week", "native-country")
+adult.data$"hours-per-week"
+mean(adult.data$"hours-per-week")
+boxplot(adult.data$"hours-per-week")
+write.csv(adult.data,file="data/adult_data.csv")
+

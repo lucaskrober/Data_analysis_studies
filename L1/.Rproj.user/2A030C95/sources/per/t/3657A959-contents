@@ -1,0 +1,101 @@
+#######################   Aula 3                      #####################################
+#######################   Lucas Krohling Bernardi     ##################################### 
+#######################   RA: 494631                  #####################################
+#######################   10/09/2015                  #####################################
+
+
+dir();
+
+
+dados=read.csv2('cubagem.csv');
+View(dados);
+names(dados);
+
+#esse comando cria uma nova coluna chamada "dap2ht", o comando with facilita para escrever
+#menos vezes a express?o "dados$..."
+dados$dap2ht=with(dados,dap^2*ht);
+
+#comando para abrir a tela grande de plotagem dos gr?ficos do R
+x11();
+
+#com os dados da base "dados", plote um gr?fico de dap2ht(x) por vicc(y), utilizando "*" como
+#os pontos dos dados com a cor azul
+with(dados,plot(dap2ht,vicc,pch='*',col='blue'));
+
+
+#verificar a correla??o dos valores da base de dados entre eles para comparar com o vicc
+cor(dados[,c('dap','ht','dap2ht','vicc')]);
+
+#criando os valores para o ajuste de spurr, utiliza-se a fun??o lm (linear model) 
+ajspurr=lm('vicc~I(dap^2*ht)',dados); #ou simplesmente...
+ajspurr=lm('vicc~dap2ht',dados);
+
+sumario=summary(ajspurr);
+
+#dentro do sumario, peque o valor do erro padr?o residual (sigma) divida pela m?dia dos valores
+#de vicc (mean(dados$vicc)), com isso calcularemos o syx%
+(syxperc=sumario$sigma/mean(dados$vicc)*100);
+
+
+#criando uma coluna chamada vicc_ets no objeto dados, utilizando os valores estimados
+#pelo modelo que escolhemos usar, ou seja os valores do ajuste de spurr
+dados$vicc_est=predict(ajspurr);
+
+
+#calculando os res?duos 
+dados$res=residuals(ajspurr);
+
+
+
+
+
+
+#####################################################################################
+
+
+#Vamos crar alguns gr?ficos
+#primeiro, vamos dividir a tela dos gr?ficos:
+x11();
+par(mfrow=c(2,2));
+
+#plotando no eixo X os dados estimados e no eixo Y os res?duos
+with(dados,plot(vicc_est,res));
+
+#Agora vamos ajustar as escalas do gr?fico, para identificar as possiveis tend?ncias
+with(dados,plot(vicc_est,res,pch='*',xlab='Volume estimado (m?)',
+                                     ylab='Res?duos (m?)',col='blue'));
+#passando uma linha no meio do gr?fico
+abline(h=0)
+
+
+library(fBasics);
+qqnormPlot(dados$res,title='false');
+?qqnormPlot
+
+#
+with(dados,plot(vicc_est,rstudent(ajspurr),pch='*',xlab='Volume estimado (m?)',
+                ylab='Residuos studentizados',col='blue',ylim=c(-3,3)));
+abline(h=0);
+
+(tinf=qt(0.025,nrow(dados)-1));
+(tsup=-tinf)
+#ou
+(tsup=qt(0.975,nrow(dados)-1));
+
+abline(h=tinf,lty=2);
+abline(h=tsup,lty=2);
+
+hist(dados$res,main='',xlab='Res?duos (m?)',ylab='Frequ?ncia',col='cyan');
+
+#para saber o padr?o de cor definidos para an?lises quaisquer que sejam as an?lises
+#procurar no site: ColorBrewer
+
+
+#caso eu queira identificar os outliers, fazer:
+dados$rstudent=rstudent(ajspurr);
+View(subset(dados,rstudent<tinf|rstudent>tsup));
+
+View(dados)
+identify(dados$vicc_est,rstudent(ajspurr));
+
+hist(dados$res,main='',ylab='frequ?ncia',xlab='res?sudos(m?)',col='green')

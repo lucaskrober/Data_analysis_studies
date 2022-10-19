@@ -1,0 +1,160 @@
+##-------- Tidy data case study ------------------------------------------
+
+# The case study uses individual-level mortality data from Mexico. The goal is to find
+# causes of death with unusual temporal patterns within a day that differ most from this
+# pattern.
+# 
+# The full dataset "data_row/deaths08.csv.bz2" has information on 539,530 deaths in Mexico
+# in 2008 and 55 variables, including the location and time of death, the cause of death, and
+# the demographics of the deceased.
+# 
+# The original dataset has been cleaned and the and only two columns "dt" and "cod" are remained
+# in the tidy dataset "data/deaths.csv.bz2
+
+library(tidyverse)
+library(lubridate)
+
+#------- Making original dataset tidy ---------------
+# deathsRow <- read_csv("data_row/deaths08.csv.bz2")
+# deaths <- deathsRow %>%
+#   select(yod,mod,dod,hod,cod) %>%
+#   mutate(hod=ifelse(hod==0 | hod==99,NA,
+#                     ifelse(hod==24,0,hod))) %>%
+#   mutate(date=ymd(paste(yod,mod,dod,sep="-"))) %>%
+#   mutate(dateTime=ymd_h(paste(date,hod,sep=" "))) %>%
+#   select(dt=dateTime,cod)
+# write_csv(deaths,"data/deaths.csv.bz2")
+
+#------- Import tidy datasets -----------------------
+deaths <- read_csv("data/deaths.csv.bz2")
+cod <- read_csv("data/codToDesease.csv.bz2")
+
+# Write a code that creates "deaths.hod.pattern" tibble that contains "hod" and "percent.hod"
+# columns. This tbble will contain the overall temporal pattern, the number of deaths per hour,
+# for all causes of death. The goal is to find the diseases that differ most from this pattern.
+death.hod.pattern <- deaths %>%
+  filter(!is.na(dt)) %>%
+  mutate(hod=hour(dt)) %>%
+  select(hod,cod) %>%
+  group_by(hod) %>%
+  summarise(freq.hod=n()) %>%
+  mutate(percent.hod=100*freq.hod/sum(freq.hod)) %>%
+  select(-freq.hod)
+
+# Plot the overall temporal pattern.
+death.hod.pattern %>%
+  ggplot() +
+  geom_line(aes(x=hod,y=percent.hod))
+
+# Write a code that creates "deaths.filtered" tibble that contains "cod", "hod"
+# and "cod.hod.percent" columns and has only "cod" values for the diseases we may consider
+# sufficiently representative (more than 50 total deaths (∼2/hour)). The "cod.hod.percent"
+# column should contain a percentage of the deaths for corresponding hour for each "cod".
+deaths.filtered <- deaths %>%
+  filter(!is.na(dt)) %>%
+  mutate(hod=hour(dt)) %>%
+  select(hod,cod) %>%
+  group_by(cod,hod) %>%
+  summarise(cod.hod.freq=n()) %>%
+  arrange(cod,hod) %>%
+  mutate(cod.hod.total=sum(cod.hod.freq)) %>%
+  filter(cod.hod.total>50) %>%
+  mutate(cod.hod.percent=100*cod.hod.freq/cod.hod.total) %>%
+  select(-cod.hod.freq,-cod.hod.total)
+
+# Write a code that creates "deaths.discarted" tibble that contains "cod", "cod.hod.total" and 
+# "disease" columns and has only "cod" values that are not in the "deaths.filtered" tibble.
+deaths.discarted <- deaths %>%
+  filter(!is.na(dt)) %>%
+  mutate(hod=hour(dt)) %>%
+  select(hod,cod) %>%
+  group_by(cod,hod) %>%
+  summarise(cod.hod.freq=n()) %>%
+  arrange(cod,hod) %>%
+  mutate(cod.hod.total=sum(cod.hod.freq)) %>%
+  filter(cod.hod.total<=50) %>%
+  select(cod.hod.total) %>%
+  unique() %>%
+  right_join(cod, by="cod") %>%
+  filter(!is.na(cod.hod.total))
+
+# Create a graph with "hod" values in x-axis and percents of disease in y-axis (one similar to
+# the overall pattern graph). Plot all the diseases on this graph (use show.legend=FALSE argument)
+# and add an overall plot on top.
+deaths.filtered %>%
+  ggplot()+
+  geom_point(aes(x=hod,y=cod.hod.percent,color=cod),alpha=.3,show.legend=FALSE)+
+  geom_point(data=death.hod.pattern,mapping=aes(x=hod,y=percent.hod))+
+  theme_minimal()
+
+# Create a "residuals" tibble that contains "cod" and "dist.sq.sum" columns. The "dist.sq.sum" column
+# will contain a sum of squared distances between "cod.hod.percent" from "deaths.filtered" tibble and
+# "percent.hod" from "death.hod.pattern" tibble for each corresponding "hod" for each "cod".
+residuals <- left_join(deaths.filtered, death.hod.pattern, by="hod") %>%
+  mutate(dist.sq=(cod.hod.percent-percent.hod)^2) %>%
+  mutate(dist.sq.sum=sum(dist.sq)) %>%
+  arrange(cod) %>%
+  select(cod,dist.sq.sum) %>%
+  unique() %>%
+  arrange(dist.sq.sum)
+
+# Plot all the "residuals" value in accending order.
+residuals %>%
+  ggplot()+
+    geom_point(aes(x=1:nrow(residuals),y=dist.sq.sum))
+
+# Set a threshold that will cut-off all the diseases with residual with higher value.
+threshold = 200
+
+# Create "unusual.cod" tibble that has "cod", "dist.sq.sum" and "disease" columns. This tibble will
+# contain "cod"s that have behaviour most different from overall deaths pattern ("dist.sq.sum" greater
+# than threshold).
+unusual.cod <- residuals %>%
+  filter(dist.sq.sum>threshold) %>%
+  right_join(cod,by="cod") %>%
+  filter(!is.na(dist.sq.sum))
+
+# Create a graph with temporal patter of all "cod"s that are not in "unsual.cod" tibble. Plot them as
+# lines (use show.legend=FALSE argument). Add to the plot an overall temporal pattern for all the
+# diseases as dots. 
+deaths.filtered %>%
+  filter(!(cod %in% unusual.cod$cod)) %>%
+  ggplot()+
+  geom_line(aes(x=hod,y=cod.hod.percent,color=cod),alpha=.3,show.legend=FALSE)+
+  geom_point(data=death.hod.pattern,mapping=aes(x=hod,y=percent.hod))+
+  theme_minimal()
+
+# Create a graph with temporal patter of all usual "cod"s form "unsual.cod" tibble. Plot them as
+# lines (use show.legend=FALSE argument). Add to the plot an overall temporal pattern for all the
+# diseases as dots. 
+deaths.filtered %>%
+  filter(cod %in% unusual.cod$cod) %>%
+  ggplot()+
+  geom_line(aes(x=hod,y=cod.hod.percent,color=cod),alpha=1,show.legend=FALSE)+
+  geom_point(data=death.hod.pattern,mapping=aes(x=hod,y=percent.hod))+
+  theme_minimal()
+
+
+
+# 1. What is the total amount of transactions?
+# Step 1: Saving temporary vector to find which lines in spendings$Amount are character and not numeric 
+temp=as.numeric(spendings$Amount)
+na=which(is.na(temp));na
+spendings$Amount[na]
+
+# Step 2: Changing cells with character values to make them change into numeric with their real values and format
+spendings$Amount[12530]=536.57
+spendings$Amount[17375]=77.39
+spendings$Amount[17540]=80.75
+spendings$Amount[34597]=452.91
+spendings$Amount[37445]=29.99
+spendings$Amount[46770]=331.5
+spendings$Amount[65565]=55.88
+spendings$Amount[69664]=55.73
+spendings$Amount[72664]=43.98
+spendings$Amount[76799]=243
+spendings$Amount[81105]=241
+spendings$Amount[82346]=95.32
+spendings$Amount[88197]=12.90
+
+

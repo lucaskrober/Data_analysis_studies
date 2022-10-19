@@ -1,0 +1,111 @@
+
+# Simpliest ggplot() call:
+ggplot(data=iris_tibble) +
+  geom_point(mapping=aes(x=Sepal.Length, y=Sepal.Width))
+
+ggplot(data=iris_tibble) +
+  geom_point(mapping=aes(x=Sepal.Length, y=Sepal.Width, color=Species, size=Petal.Width))
+
+random_data <- tibble(x.val=rnorm(100000),
+                      y.val=rnorm(100000),
+                      species=as.factor(sample(c("A","B"),100000, replace=TRUE))) %>%
+  mutate(y.val=ifelse(species=='B',y.val+2,y.val))
+
+random_data %>%
+  ggplot() +
+  geom_point(mapping=aes(x=x.val, y=y.val,colour=species), # parameters specified inside aes() are based on data
+             shape=19,
+             alpha=.1 # parameter that is specified outside of aes() applied for all geometry
+  )
+
+
+random_data %>%
+  group_by(species) %>%
+  sample_frac(.1) %>%
+  ggplot() +
+  geom_point(mapping=aes(x=species, y=x.val))
+
+random_data %>%
+  group_by(species) %>%
+  sample_frac(.1) %>%
+  ggplot() +
+  geom_jitter(mapping=aes(x=species, y=x.val))
+
+random_data %>%
+  group_by(species) %>%
+  sample_frac(.1) %>%
+  ggplot() +
+  geom_boxplot(mapping=aes(x=species, y=x.val))
+
+
+
+ggplot(data=mtcars) +
+  geom_bar(mapping=aes(x=vs, fill=am))+
+  theme(
+    # plot.background=element_rect(fill="yellow"),
+    #     panel.background=element_rect(fill="green"),
+    plot.background=element_blank(),
+    panel.background=element_blank(),
+    panel.grid.major=element_line(color="purple"))
+
+ggplot(data=mtcars) +
+  geom_bar(mapping=aes(x=vs, fill=am))+
+  theme(plot.background=element_blank(),
+        panel.background=element_blank(),
+        panel.grid.major=element_line(color="purple"))+
+  xlab("Type of engine")+
+  theme(axis.title=element_text(color="red"))+
+  ylab("Counts (un.)")+
+  ylim(c(0,20))
+
+
+ggplot(data=mtcars) +
+  geom_bar(mapping=aes(x=vs, fill=am))+
+  theme(plot.background=element_blank(),
+        panel.background=element_blank(),
+        panel.grid.major=element_line(color="purple"))+
+  scale_x_discrete(name="Type of engine", position="top")+
+  scale_y_continuous(name="Counts (un.)", limits=c(0,20))+
+  scale_fill_manual(values=c("blue","green"))
+theme(axis.title=element_text(color="red"))
+
+
+mtcars %>%
+  ggplot() +
+  geom_bar(mapping=aes(x=vs, fill=am))+
+  theme(plot.background=element_blank(),
+        panel.background=element_blank(),
+        panel.grid.major=element_line(color="purple"))+
+  theme(axis.title=element_text(color="red"))+
+  scale_x_discrete(name="Type of engine", position="top")+
+  scale_y_continuous(name="Counts (un.)", limits=c(0,20))+
+  scale_fill_manual(values=c("blue","green"),
+                    guide=guide_legend(title="Transmission",
+                                       nrow=1,
+                                       label.position="bottom",
+                                       keywidth=3))+
+  theme(legend.position="top")
+
+
+set.seed(6)
+as.tibble(rpois(1000,5)) %>%
+  ggplot(aes(x=value)) +
+  geom_histogram(bins=10, origin=0)
+
+set.seed(6)
+as.tibble(rpois(1000,5)) %>%
+  ggplot(aes(x=value)) +
+  geom_histogram(binwidth=3, origin=0)
+
+
+ggplot(data=mtcars) +
+  geom_bar(mapping=aes(x=vs, color=am))
+
+ggplot(data=mtcars) +
+  geom_bar(mapping=aes(x=as.factor(vs), fill=as.factor(am)))
+
+mtcars %>%
+  group_by(vs) %>%
+  summarise(average_mpg=mean(mpg)) %>%
+  ggplot() +
+  geom_col(aes(x=vs,y=average_mpg))

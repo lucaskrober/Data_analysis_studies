@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1583799897922.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1095898318",
+    "id" : "FE85E186",
+    "lastKnownWriteTime" : 1583778080,
+    "last_content_update" : 1583778080,
+    "path" : "D:/Faculdade/DOUTURADO/Disciplinas/Statistical data analysis in R - 1st semester 2020 (Sorocaba)/L1/script.R",
+    "project_path" : "script.R",
+    "properties" : {
+        "cursorPosition" : "143,61",
+        "scrollLine" : "127"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

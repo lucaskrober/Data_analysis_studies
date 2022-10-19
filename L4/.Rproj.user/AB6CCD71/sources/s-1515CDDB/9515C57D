@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1587748542553.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "9515C57D",
+    "lastKnownWriteTime" : 1587919148,
+    "last_content_update" : 1587919148028,
+    "path" : "~/Documents/DATA/ufscar/Statistical data analysis in R/L4/script.R",
+    "project_path" : "script.R",
+    "properties" : {
+        "cursorPosition" : "78,36",
+        "scrollLine" : "60",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

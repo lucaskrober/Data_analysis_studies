@@ -1,0 +1,72 @@
+id,name,city,state,region,highest_degree,control,gender,admission_rate,sat_avg,undergrads,tuition,faculty_salary_avg,loan_default_rate,median_debt,lon,lat
+121345,Pomona College,Claremont,CA,West,Bachelor,Private,CoEd,0.1219,1454,1635,45832,12421,0,9788,-117.7197785,34.0966764
+110404,California Institute of Technology,Pasadena,CA,West,Graduate,Private,CoEd,0.0883,1545,983,43362,18138,0.025,11812.5,-118.1445155,34.1477849
+243744,Stanford University,Stanford,CA,West,Graduate,Private,CoEd,0.0509,1465,7018,45195,20650,0.008,12782,-122.1660756,37.42410599999999
+112260,Claremont McKenna College,Claremont,CA,West,Graduate,Private,CoEd,0.1077,1419,1293,47395,12751,0,13500,-117.7197785,34.0966764
+110592,California State University-Los Angeles,Los Angeles,CA,West,Graduate,Public,CoEd,0.6107,871,20643,6348,8683,0.06,13645,-118.2436849,34.0522342
+123165,Scripps College,Claremont,CA,West,Graduate,Private,Women,0.284,1360,962,47378,10754,0.028,13749.5,-117.7197785,34.0966764
+110635,University of California-Berkeley,Berkeley,CA,West,Graduate,Public,CoEd,0.1602,1382,27126,12972,15194,0.029,14200,-122.272747,37.8715926
+110644,University of California-Davis,Davis,CA,West,Graduate,Public,CoEd,0.4037,1226,27547,13896,12587,0.027,14833,-121.7405167,38.5449065
+110565,California State University-Fullerton,Fullerton,CA,West,Graduate,Public,CoEd,0.4447,1021,32610,6315,8561,0.035,14944,-117.9242123,33.8703645
+110608,California State University-Northridge,Northridge,CA,West,Graduate,Public,CoEd,0.5286,914,35409,6549,8457,0.052,15000,-118.530123,34.2381251
+110583,California State University-Long Beach,Long Beach,CA,West,Graduate,Public,CoEd,0.3546,1054,31494,6452,8669,0.038,15446,-118.1937395,33.7700504
+122755,San Jose State University,San Jose,CA,West,Graduate,Public,CoEd,0.5985,1038,26528,7323,9171,0.031,15628,-121.8863286,37.3382082
+110556,California State University-Fresno,Fresno,CA,West,Graduate,Public,CoEd,0.594,910,20128,6299,8111,0.043,15993.5,-119.7725868,36.7468422
+122409,San Diego State University,San Diego,CA,West,Graduate,Public,CoEd,0.3448,1115,27824,6866,9277,0.036,15998,-117.1610838,32.715738
+110662,University of California-Los Angeles,Los Angeles,CA,West,Graduate,Public,CoEd,0.1856,1330,29627,12705,15841,0.015,16126,-118.2436849,34.0522342
+110538,California State University-Chico,Chico,CA,West,Graduate,Public,CoEd,0.7096,996,15844,7002,8243,0.055,16500,-121.8374777,39.7284944
+110617,California State University-Sacramento,Sacramento,CA,West,Graduate,Public,CoEd,0.7265,937,26400,6648,8470,0.058,16500,-121.4943996,38.5815719
+124292,Thomas Aquinas College,Santa Paula,CA,West,Bachelor,Private,CoEd,0.827,1261,378,24500,9237,0.012,16500,-119.0592705,34.3541659
+123457,Simpson University,Redding,CA,West,Graduate,Private,CoEd,0.5736,1024,1065,24300,6256,0.03,16666,-122.3916754,40.5865396
+110705,University of California-Santa Barbara,Santa Barbara,CA,West,Graduate,Public,CoEd,0.3634,1253,20237,13865,13665,0.04,16800,-119.6981901,34.4208305
+110653,University of California-Irvine,Irvine,CA,West,Graduate,Public,CoEd,0.3742,1168,24474,13179,13297,0.023,17000,-117.8265049,33.6845673
+110510,California State University-San Bernardino,San Bernardino,CA,West,Graduate,Public,CoEd,0.8445,884,16439,6550,8521,0.069,17500,-117.2897652,34.1083449
+122597,San Francisco State University,San Francisco,CA,West,Graduate,Public,CoEd,0.6597,990,25170,6468,9248,0.057,17501,-122.4194155,37.7749295
+123572,Sonoma State University,Rohnert Park,CA,West,Graduate,Public,CoEd,0.8002,984,8441,7276,8659,0.035,17881,-122.7010984,38.3396367
+366711,California State University-San Marcos,San Marcos,CA,West,Graduate,Public,CoEd,0.618,948,11506,7169,8362,0.049,18000,-117.1661449,33.1433723
+110529,California State Polytechnic University-Pomona,Pomona,CA,West,Graduate,Public,CoEd,0.5187,1074,22269,6904,9036,0.032,18500,-117.7499909,34.055103
+110680,University of California-San Diego,La Jolla,CA,West,Graduate,Public,CoEd,0.3329,1313,24801,13427,13689,0.025,19000,-117.2712717,32.8328112
+110422,California Polytechnic State University-San Luis Obispo,San Luis Obispo,CA,West,Graduate,Public,CoEd,0.3089,1234,19177,8918,8767,0.016,19166,-120.6596156,35.2827524
+445188,University of California-Merced,Merced,CA,West,Graduate,Public,CoEd,0.6718,1031,5884,13160,9237,0.052,19500,-120.4829677,37.3021632
+110671,University of California-Riverside,Riverside,CA,West,Graduate,Public,CoEd,0.5829,1128,18784,13407,11880,0.043,19500,-117.3961564,33.9533487
+115755,Humboldt State University,Arcata,CA,West,Graduate,Public,CoEd,0.7655,986,7962,7171,8118,0.092,19553,-124.0828396,40.8665166
+110714,University of California-Santa Cruz,Santa Cruz,CA,West,Graduate,Public,CoEd,0.5572,1149,16277,13397,12428,0.034,19884,-122.0307963,36.9741171
+114813,Fresno Pacific University,Fresno,CA,West,Graduate,Private,CoEd,0.6662,1010,2605,26638,6342,0.062,19972.5,-119.7725868,36.7468422
+112084,San Diego Christian College,Santee,CA,West,Graduate,Private,CoEd,0.555,992,940,27090,5924,0.084,20000,-116.9739167,32.8383828
+122931,Santa Clara University,Santa Clara,CA,West,Graduate,Private,CoEd,0.4935,1309,5447,43812,11761,0.022,20500,-121.9552356,37.3541079
+111948,Chapman University,Orange,CA,West,Graduate,Private,CoEd,0.4704,1210,6211,45393,11197,0.023,21000,-117.8531007,33.7879139
+117751,The Master's College and Seminary,Santa Clarita,CA,West,Graduate,Private,CoEd,0.7588,1103,1182,29860,6693,0.026,21250,-118.542586,34.3916641
+117104,Life Pacific College,San Dimas,CA,West,Graduate,Private,CoEd,0.6633,903,479,12860,6317,0.08,21500,-117.8067257,34.1066756
+122728,William Jessup University,Rocklin,CA,West,Graduate,Private,CoEd,0.7581,1009,1131,24990,6715,0.084,21500,-121.2357828,38.7907339
+123961,University of Southern California,Los Angeles,CA,West,Graduate,Private,CoEd,0.1802,1380,18392,48280,13355,0.012,21500,-118.2436849,34.0522342
+109785,Azusa Pacific University,Azusa,CA,West,Graduate,Private,CoEd,0.8183,1037,5918,33096,9360,0.036,22500,-117.9075627,34.1336186
+117946,Loyola Marymount University,Los Angeles,CA,West,Graduate,Private,CoEd,0.5271,1218,6064,41597,10215,0.025,22500,-118.2436849,34.0522342
+112075,Concordia University-Irvine,Irvine,CA,West,Graduate,Private,CoEd,0.8608,1038,1884,30640,6855,0.024,22589,-117.8265049,33.6845673
+118693,Menlo College,Atherton,CA,West,Bachelor,Private,CoEd,0.4506,995,793,37520,12023,0.08,22746.5,-122.197743,37.4613272
+122436,University of San Diego,San Diego,CA,West,Graduate,Private,CoEd,0.4625,1243,5656,42908,12190,0.015,22750,-117.1610838,32.715738
+110413,California Lutheran University,Thousand Oaks,CA,West,Graduate,Private,CoEd,0.6097,1109,2799,37140,10313,0.027,23000,-118.8375937,34.1705609
+120254,Occidental College,Los Angeles,CA,West,Graduate,Private,CoEd,0.4204,1300,2023,47522,10599,0.028,23231.5,-118.2436849,34.0522342
+120883,University of the Pacific,Stockton,CA,West,Graduate,Private,CoEd,0.549,1185,3802,41342,10193,0.033,23370,-121.2907796,37.9577016
+118888,Mills College,Oakland,CA,West,Graduate,Private,Women,0.7614,1152,909,42918,10011,0.038,23471,-122.2711137,37.8043637
+110097,Biola University,La Mirada,CA,West,Graduate,Private,CoEd,0.754,1122,4364,33322,9060,0.022,24375,-118.0120086,33.9172357
+117140,University of La Verne,La Verne,CA,West,Graduate,Private,CoEd,0.4656,1014,5137,36744,9344,0.038,24894,-117.7678355,34.1008426
+125727,Westmont College,Santa Barbara,CA,West,Bachelor,Private,CoEd,0.7936,1175,1297,39990,7654,0.016,24954,-119.6981901,34.4208305
+123651,Vanguard University of Southern California,Costa Mesa,CA,West,Graduate,Private,CoEd,0.58,970,1941,30050,7473,0.044,25000,-117.9188221,33.6412156
+119173,Mount Saint Mary's University,Los Angeles,CA,West,Graduate,Private,Women,0.783,902,2659,34826,8340,0.043,25000,-118.2436849,34.0522342
+125763,Whittier College,Whittier,CA,West,Graduate,Private,CoEd,0.6188,1061,1624,41836,8993,0.043,25000,-118.032844,33.9791793
+121309,Point Loma Nazarene University,San Diego,CA,West,Graduate,Private,CoEd,0.6953,1135,2560,31406,9435,0.019,25000,-117.1610838,32.715738
+122612,University of San Francisco,San Francisco,CA,West,Graduate,Private,CoEd,0.6005,1152,6745,41450,12667,0.027,25000,-122.4194155,37.7749295
+462354,John Paul the Great Catholic University,Escondido,CA,West,Graduate,Private,CoEd,0.875,1086,195,24900,6794,NA,25748.5,-117.086421,33.1192068
+123554,Saint Mary's College of California,Moraga,CA,West,Graduate,Private,CoEd,0.7595,1109,2949,41380,10123,0.039,25750,-122.1296871,37.8349263
+120537,Hope International University,Fullerton,CA,West,Graduate,Private,CoEd,0.31,896,816,27130,6827,0.041,26000,-117.9242123,33.8703645
+115409,Harvey Mudd College,Claremont,CA,West,Bachelor,Private,CoEd,0.1425,1500,802,48594,12765,0,26000,-117.7197785,34.0966764
+121150,Pepperdine University,Malibu,CA,West,Graduate,Private,CoEd,0.3546,1234,3434,46692,11472,0.019,26500,-118.7797571,34.0259216
+120184,Notre Dame de Namur University,Belmont,CA,West,Graduate,Private,CoEd,0.7771,932,1177,31822,8365,0.034,26865.5,-122.2758008,37.5202145
+117627,La Sierra University,Riverside,CA,West,Graduate,Private,CoEd,0.4064,934,2054,29895,7132,0.056,27000,-117.3961564,33.9533487
+120403,Otis College of Art and Design,Los Angeles,CA,West,Graduate,Private,CoEd,0.6648,1010,1090,40490,7184,0.102,27000,-118.2436849,34.0522342
+113698,Dominican University of California,San Rafael,CA,West,Graduate,Private,CoEd,0.8092,1047,1448,41730,8357,0.027,27000,-122.5310874,37.9735346
+110361,California Baptist University,Riverside,CA,West,Graduate,Private,CoEd,0.7967,976,6435,29422,8550,0.047,27000,-117.3961564,33.9533487
+121691,University of Redlands,Redlands,CA,West,Graduate,Private,CoEd,0.7309,1110,3710,43186,9748,0.03,27000,-117.1825381,34.0555693
+115728,Holy Names University,Oakland,CA,West,Graduate,Private,CoEd,0.5706,885,690,34488,9842,0.039,27000,-122.2711137,37.8043637
+120865,Pacific Union College,Angwin,CA,West,Graduate,Private,CoEd,0.4744,1017,1583,28131,5863,0.049,28500,-122.4499796,38.5757402
+123952,Southern California Institute of Architecture,Los Angeles,CA,West,Graduate,Private,CoEd,0.8079,1151,263,40262,10504,0.046,39500,-118.2436849,34.0522342

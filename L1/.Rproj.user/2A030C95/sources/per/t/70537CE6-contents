@@ -1,0 +1,15 @@
+dir();
+dados=read.csv2('cubagem.csv');
+View(dados)
+names(dados)
+
+#modelo de spurr
+#modelo='viccI(dap^2ht)'
+
+#Modelo de Schumacher & Hall Logar?timico
+modelo='log(vicc)~I(log(dap))+I(log(ht))';
+
+ajlin=lm(modelo,dados);
+(sumario=summary(ajlin));
+
+anova(ajlin)

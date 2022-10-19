@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1588587495369.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4263505258",
+    "id" : "63FD57A6",
+    "lastKnownWriteTime" : 1588590384,
+    "last_content_update" : 1588590384231,
+    "path" : "~/Documents/DATA/ufscar/Statistical data analysis in R/L5/visualization.R",
+    "project_path" : "visualization.R",
+    "properties" : {
+        "cursorPosition" : "85,48",
+        "scrollLine" : "64"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

@@ -1,0 +1,33 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1584110777967.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "FD1AC5E1",
+    "lastKnownWriteTime" : 8319395791730900992,
+    "last_content_update" : 1584110777967,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "F8B49A2E",
+        "caption" : "students.readr",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=students.readr&cache_key=F8B49A2E",
+        "displayedObservations" : "16",
+        "environment" : "",
+        "expression" : "students.readr",
+        "object" : "students.readr",
+        "preview" : "0",
+        "totalObservations" : "16",
+        "variables" : "4"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

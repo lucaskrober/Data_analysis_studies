@@ -1,0 +1,24 @@
+# Data Visualization with ggplot
+# Building Your First Visualization
+# Video 1.4
+
+# Load the dataset as described in Video 1.3
+
+library(tidyverse)
+college <- read_csv('http://672258.youcanlearnit.net/college.csv')
+college <- college %>%
+  mutate(state=as.factor(state), region=as.factor(region),
+         highest_degree=as.factor(highest_degree),
+         control=as.factor(control), gender=as.factor(gender),
+         loan_default_rate=as.numeric(loan_default_rate))
+write_csv(college,"data/college.csv.bz2")
+# Calling ggplot() along just creates a blank plot
+ggplot()
+
+# I need to tell ggplot what data to use
+ggplot(data=college)
+
+# And then give it some instructions using the grammar of graphics.
+# Let's build a simple scatterplot with tuition on the x-axis and average SAT score on the y axis
+ggplot(data=college) +
+  geom_point(mapping=aes(x=tuition, y=sat_avg))

@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1589209322771.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2517984841",
+    "id" : "AD28DD97",
+    "lastKnownWriteTime" : 1586036601,
+    "last_content_update" : 1586036601,
+    "path" : "~/Documents/DATA/ufscar/Statistical data analysis in R/L6 Case study - solved/script.R",
+    "project_path" : "script.R",
+    "properties" : {
+        "cursorPosition" : "89,2",
+        "scrollLine" : "81",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
