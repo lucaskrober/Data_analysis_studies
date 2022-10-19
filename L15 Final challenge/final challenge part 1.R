@@ -24,7 +24,7 @@ spendings <- as_tibble(read.csv("data/credit_card_spendings.csv.bz2"))
 #spendings$Amount[na] <- temp[na] 
 
 #spendings$Amount <- as.numeric(spendings$Amount)
-
+#regex: ^\d\d?[.]\d\d?$ (why it doesn't work?)
 tamount <- spendings %>%
   select(Amount) %>%
   mutate(Amount=str_replace_all(Amount, "[^-0123456789.]","")) %>%

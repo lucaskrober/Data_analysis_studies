@@ -38,7 +38,7 @@ regexpr("h.?w",myString,perl=TRUE)
 gregexpr("h.?w",myString,perl=TRUE)
 regexec("how",myString,perl=TRUE)
 
-# Modifiesrs:
+# Modifiers:
 # - Global mode - earliest match is prefered
 # - Case sensitive
 # - Dot matches all
