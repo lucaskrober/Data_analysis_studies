@@ -44,8 +44,8 @@ sd(prior)
 quantile(posterior, c(0.025, 0.975))
 
 
-5 successes out of 12 trials
-8 successes out of 20 trials
+#5 successes out of 12 trials
+#8 successes out of 20 trials
 
 
 
